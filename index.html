@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fortune Seaweed's Trading — Local Buyer & Seller of Dried Cottonii & Spinosum</title>
+  <meta name="description" content="Fortune Seaweed's Trading — local buyer and seller of dried Eucheuma Cottonii and Spinosum seaweed. Live bodega stock and direct RFQ." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+
+  <!-- ============ STICKY HEADER ============ -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav">
+      <a href="#top" class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="28" height="28">
+            <path d="M16 2c-3 6-9 8-9 14 0 6 4 10 9 14 5-4 9-8 9-14 0-6-6-8-9-14z" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <strong>Fortune Seaweed's</strong>
+          <em>Trading</em>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#catalog">Catalog</a>
+        <a href="#bodega">Live Bodega Stock</a>
+        <a href="#leadership">Leadership</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#contact" class="btn btn-primary nav-cta">Request a Quote</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <span class="eyebrow">Local Buyer & Seller · Sulawesi Origin</span>
+        <h1>Dried Cottonii & Spinosum, <span class="accent">Bought Direct, Sold Honest.</span></h1>
+        <p class="lede">
+          Fortune Seaweed's Trading is a local buyer and seller of dried Eucheuma Cottonii and Spinosum. We source directly from coastal farmers and resell to processors and traders — straightforward stock, transparent dealing.
+        </p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-primary">Request a Quote</a>
+          <a href="#catalog" class="btn btn-ghost">View Catalog →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CATALOG ============ -->
+    <section id="catalog" class="section">
+      <div class="container">
+        <header class="section-head">
+          <span class="kicker">01 · Catalog</span>
+          <h2>Two Varieties We Buy and Sell.</h2>
+          <p>Both sourced from coastal farmers in Sulawesi and sun-dried before being held in our bodega.</p>
+        </header>
+
+        <div class="catalog-grid">
+          <article class="product-card">
+            <div class="product-media" data-product="cottonii">
+              <span class="badge">Kappa Source</span>
+            </div>
+            <div class="product-body">
+              <h3>Dried Eucheuma Cottonii</h3>
+              <p class="product-sub">Sun-dried whole · Sold by metric ton</p>
+              <button class="btn btn-primary btn-full select-rfq" data-variety="Cottonii">
+                Select for RFQ
+              </button>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-media" data-product="spinosum">
+              <span class="badge">Iota Source</span>
+            </div>
+            <div class="product-body">
+              <h3>Dried Eucheuma Spinosum</h3>
+              <p class="product-sub">Sun-dried whole · Sold by metric ton</p>
+              <button class="btn btn-primary btn-full select-rfq" data-variety="Spinosum">
+                Select for RFQ
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LIVE BODEGA STOCK ============ -->
+    <section id="bodega" class="section section-alt">
+      <div class="container">
+        <header class="section-head">
+          <span class="kicker">02 · Live Inventory · <span id="liveDot" class="live-dot">SYNCING</span></span>
+          <h2>Current Stock in our Bodega</h2>
+          <p>Inventory streamed directly from our warehouse master spreadsheet. Last sync: <span id="lastSync">—</span></p>
+        </header>
+
+        <div class="stock-grid stock-grid-2">
+          <div class="stock-card">
+            <span class="stock-label">Dried Cottonii</span>
+            <span class="stock-value" id="stockCottonii">—</span>
+            <span class="stock-unit">Metric Tons Available</span>
+            <div class="stock-meter"><div class="stock-fill" id="meterCottonii"></div></div>
+          </div>
+          <div class="stock-card">
+            <span class="stock-label">Dried Spinosum</span>
+            <span class="stock-value" id="stockSpinosum">—</span>
+            <span class="stock-unit">Metric Tons Available</span>
+            <div class="stock-meter"><div class="stock-fill" id="meterSpinosum"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXECUTIVE / CEO ============ -->
+    <section id="leadership" class="section section-alt">
+      <div class="container leadership-grid">
+        <div class="ceo-frame">
+          <div class="ceo-photo" role="img" aria-label="Portrait placeholder of the CEO"></div>
+          <span class="ceo-tag">Founder · CEO</span>
+        </div>
+        <div class="ceo-copy">
+          <span class="kicker">03 · Leadership</span>
+          <h2>“Honest weight, honest dry, honest price — that's the whole job.”</h2>
+          <p>
+            Fortune Seaweed's Trading is a family-run local buyer and seller. We buy dried Cottonii and Spinosum directly from coastal farmers in Sulawesi and resell it to processors and traders. Fair rates to our farmers, straightforward dealing with our buyers.
+          </p>
+          <p class="ceo-signature">— Andika R. Pratama, Founder &amp; CEO</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT / RFQ ============ -->
+    <section id="contact" class="section">
+      <div class="container contact-grid">
+        <div class="contact-copy">
+          <span class="kicker">04 · Request a Quote</span>
+          <h2>Send Us a Quote Request.</h2>
+          <p>Tell us the variety and volume you need. Our local desk responds within one business day with availability and indicative pricing.</p>
+          <ul class="contact-meta">
+            <li><strong>Trading Desk:</strong> trade@fortuneseaweeds.co</li>
+            <li><strong>Bodega:</strong> Makassar, Sulawesi · ID</li>
+            <li><strong>Operating Hours:</strong> 07:00 – 19:00 WITA</li>
+          </ul>
+        </div>
+
+        <form id="rfqForm" class="rfq-form" novalidate>
+          <div class="field">
+            <label for="variety">Selected Variety</label>
+            <select id="variety" name="variety" required>
+              <option value="">Select variety…</option>
+              <option value="Cottonii">Dried Eucheuma Cottonii</option>
+              <option value="Spinosum">Dried Eucheuma Spinosum</option>
+            </select>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="volume">Target Volume (MT)</label>
+              <input id="volume" name="volume" type="number" min="1" placeholder="e.g. 240" required />
+            </div>
+            <div class="field">
+              <label for="terms">Pickup / Delivery</label>
+              <select id="terms" name="terms" required>
+                <option value="">Select…</option>
+                <option value="Pickup">Pickup at Bodega · Makassar</option>
+                <option value="Delivery">Local Delivery</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="email">Contact Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required />
+          </div>
+          <div class="field">
+            <label for="port">Pickup / Delivery Location</label>
+            <input id="port" name="port" type="text" placeholder="e.g. Makassar, Parepare, Kendari" required />
+          </div>
+          <button type="submit" class="btn btn-primary btn-full btn-lg">
+            Send Quote Request
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <span class="brand-text footer-brand">
+          <strong>Fortune Seaweed's</strong> <em>Trading</em>
+        </span>
+        <p>Local buyer and seller of dried Eucheuma Cottonii and Spinosum, based in Sulawesi.</p>
+      </div>
+      <div>
+        <h5>Location</h5>
+        <ul>
+          <li>Makassar Bodega</li>
+          <li>Sulawesi, Indonesia</li>
+        </ul>
+      </div>
+      <div>
+        <h5>Trade</h5>
+        <ul>
+          <li>Buying from farmers</li>
+          <li>Selling to processors</li>
+          <li>Local delivery available</li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-base">
+      <span>© <span id="year"></span> Fortune Seaweed's Trading · All rights reserved.</span>
+      <span class="footer-track">Session: <span id="sessionId">—</span></span>
+    </div>
+  </footer>
+
+  <!-- ============ MODAL OVERLAY ============ -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-card">
+      <span class="modal-icon" id="modalIcon">✓</span>
+      <h3 id="modalTitle">RFQ Submitted</h3>
+      <p id="modalBody">Our export desk has received your request.</p>
+      <button class="btn btn-primary" id="modalClose">Close</button>
+    </div>
+  </div>
+
+  <script src="./script.js" defer></script>
+</body>
+</html>
