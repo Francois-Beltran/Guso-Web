@@ -28,7 +28,8 @@
       </a>
       <nav class="nav-links" aria-label="Primary">
         <a href="#catalog">Catalog</a>
-        <a href="#bodega">Live Bodega Stock</a>
+        <a href="#why-us">Why Us</a>
+        <a href="#bodega">Live Stock</a>
         <a href="#leadership">Leadership</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -43,15 +44,35 @@
     <!-- ============ HERO ============ -->
     <section class="hero">
       <div class="hero-bg" aria-hidden="true"></div>
-      <div class="container hero-inner">
-        <span class="eyebrow">Local Buyer & Seller · Sulawesi Origin</span>
-        <h1>Dried Cottonii & Spinosum, <span class="accent">Bought Direct, Sold Honest.</span></h1>
-        <p class="lede">
-          Fortune Seaweed's Trading is a local buyer and seller of dried Eucheuma Cottonii and Spinosum. We source directly from coastal farmers and resell to processors and traders — straightforward stock, transparent dealing.
-        </p>
-        <div class="hero-ctas">
-          <a href="#contact" class="btn btn-primary">Request a Quote</a>
-          <a href="#catalog" class="btn btn-ghost">View Catalog →</a>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="hero-text">
+          <span class="eyebrow">Local Buyer & Seller · Sulawesi Origin</span>
+          <h1>Dried Cottonii & Spinosum, <span class="accent">Bought Direct, Sold Honest.</span></h1>
+          <p class="lede">
+            Fortune Seaweed's Trading is a local buyer and seller of dried Eucheuma Cottonii and Spinosum. We source directly from coastal farmers and resell to processors and traders — straightforward, no middleman layers.
+          </p>
+          <div class="hero-ctas">
+            <a href="#contact" class="btn btn-primary">Request a Quote</a>
+            <a href="#catalog" class="btn btn-ghost">View Catalog →</a>
+          </div>
+          <div class="hero-stats">
+            <div>
+              <dt>Years in Trade</dt>
+              <dd>12+</dd>
+            </div>
+            <div>
+              <dt>Annual Volume</dt>
+              <dd>2,400MT</dd>
+            </div>
+            <div>
+              <dt>Farming Partners</dt>
+              <dd>50+</dd>
+            </div>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=625&fit=crop" alt="Fortune Seaweed's CEO" />
         </div>
       </div>
     </section>
@@ -65,27 +86,57 @@
           <p>Both sourced from coastal farmers in Sulawesi and sun-dried before being held in our bodega.</p>
         </header>
 
-        <div class="catalog-grid">
-          <article class="product-card">
+        <div class="catalog-grid reveal-group">
+          <article class="product-card reveal">
             <div class="product-media" data-product="cottonii">
               <span class="badge">Kappa Source</span>
+              <span class="product-icon">🌿</span>
             </div>
             <div class="product-body">
               <h3>Dried Eucheuma Cottonii</h3>
               <p class="product-sub">Sun-dried whole · Sold by metric ton</p>
+              <table class="spec-table">
+                <tr>
+                  <th>Moisture</th>
+                  <td>&lt; 12%</td>
+                </tr>
+                <tr>
+                  <th>Purity</th>
+                  <td>98%+</td>
+                </tr>
+                <tr>
+                  <th>Yield</th>
+                  <td>20:1 ratio</td>
+                </tr>
+              </table>
               <button class="btn btn-primary btn-full select-rfq" data-variety="Cottonii">
                 Select for RFQ
               </button>
             </div>
           </article>
 
-          <article class="product-card">
+          <article class="product-card reveal">
             <div class="product-media" data-product="spinosum">
               <span class="badge">Iota Source</span>
+              <span class="product-icon">🌱</span>
             </div>
             <div class="product-body">
               <h3>Dried Eucheuma Spinosum</h3>
               <p class="product-sub">Sun-dried whole · Sold by metric ton</p>
+              <table class="spec-table">
+                <tr>
+                  <th>Moisture</th>
+                  <td>&lt; 12%</td>
+                </tr>
+                <tr>
+                  <th>Purity</th>
+                  <td>98%+</td>
+                </tr>
+                <tr>
+                  <th>Yield</th>
+                  <td>18:1 ratio</td>
+                </tr>
+              </table>
               <button class="btn btn-primary btn-full select-rfq" data-variety="Spinosum">
                 Select for RFQ
               </button>
@@ -95,23 +146,67 @@
       </div>
     </section>
 
-    <!-- ============ LIVE BODEGA STOCK ============ -->
-    <section id="bodega" class="section section-alt">
+    <!-- ============ WHY CHOOSE US ============ -->
+    <section id="why-us" class="section section-alt">
       <div class="container">
         <header class="section-head">
-          <span class="kicker">02 · Live Inventory · <span id="liveDot" class="live-dot">SYNCING</span></span>
+          <span class="kicker">02 · Why Choose Us</span>
+          <h2>Built on Trust and Direct Relationships.</h2>
+          <p>We skip the middlemen and deal directly with farmers and processors.</p>
+        </header>
+
+        <div class="why-grid reveal-group">
+          <div class="why-card reveal">
+            <span class="why-icon">⚡</span>
+            <h3>Direct Sourcing</h3>
+            <p>We buy directly from coastal farmers in Sulawesi, eliminating middleman markups and ensuring fair pricing.</p>
+          </div>
+          <div class="why-card reveal">
+            <span class="why-icon">🔍</span>
+            <h3>Quality Control</h3>
+            <p>Every batch is inspected for moisture, purity, and yield. No shortcuts, no compromises.</p>
+          </div>
+          <div class="why-card reveal">
+            <span class="why-icon">⏱️</span>
+            <h3>Fast Response</h3>
+            <p>Local trading desk responds within 1 business day. Live stock updates. No waiting around.</p>
+          </div>
+          <div class="why-card reveal">
+            <span class="why-icon">📦</span>
+            <h3>Flexible Delivery</h3>
+            <p>Pickup at our Makassar bodega or local delivery options available. Your choice.</p>
+          </div>
+          <div class="why-card reveal">
+            <span class="why-icon">💰</span>
+            <h3>Transparent Pricing</h3>
+            <p>No hidden fees. Honest weight, honest dry, honest price — that's our philosophy.</p>
+          </div>
+          <div class="why-card reveal">
+            <span class="why-icon">🤝</span>
+            <h3>Long-term Partners</h3>
+            <p>We build relationships, not transactions. Regular buyers get priority and volume discounts.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LIVE BODEGA STOCK ============ -->
+    <section id="bodega" class="section">
+      <div class="container">
+        <header class="section-head">
+          <span class="kicker">03 · Live Inventory · <span id="liveDot" class="live-dot">SYNCING</span></span>
           <h2>Current Stock in our Bodega</h2>
           <p>Inventory streamed directly from our warehouse master spreadsheet. Last sync: <span id="lastSync">—</span></p>
         </header>
 
-        <div class="stock-grid stock-grid-2">
-          <div class="stock-card">
+        <div class="stock-grid stock-grid-2 reveal-group">
+          <div class="stock-card reveal">
             <span class="stock-label">Dried Cottonii</span>
             <span class="stock-value" id="stockCottonii">—</span>
             <span class="stock-unit">Metric Tons Available</span>
             <div class="stock-meter"><div class="stock-fill" id="meterCottonii"></div></div>
           </div>
-          <div class="stock-card">
+          <div class="stock-card reveal">
             <span class="stock-label">Dried Spinosum</span>
             <span class="stock-value" id="stockSpinosum">—</span>
             <span class="stock-unit">Metric Tons Available</span>
@@ -121,18 +216,69 @@
       </div>
     </section>
 
+    <!-- ============ SOURCING PROCESS ============ -->
+    <section class="section section-alt">
+      <div class="container">
+        <header class="section-head">
+          <span class="kicker">04 · Our Process</span>
+          <h2>From Farm to Your Warehouse.</h2>
+          <p>A transparent, quality-driven workflow that ensures the best seaweed reaches you.</p>
+        </header>
+
+        <div class="timeline reveal-group">
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-num">Step 1</span>
+              <h3>Farmer Partnership</h3>
+              <p>We work with established coastal farmers in Sulawesi who practice sustainable harvesting and proper drying techniques.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-num">Step 2</span>
+              <h3>Harvest & Dry</h3>
+              <p>Eucheuma is sun-dried on beaches for 3–5 days. We monitor moisture and cleanliness standards throughout.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-num">Step 3</span>
+              <h3>Quality Inspection</h3>
+              <p>Every batch is tested for moisture content, foreign matter, and yield. Only A-grade stock enters the bodega.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-num">Step 4</span>
+              <h3>Storage & Logistics</h3>
+              <p>Climate-controlled bodega in Makassar. Fast shipping to processors and traders — local or export.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ EXECUTIVE / CEO ============ -->
-    <section id="leadership" class="section section-alt">
+    <section id="leadership" class="section">
       <div class="container leadership-grid">
-        <div class="ceo-frame">
-          <div class="ceo-photo" role="img" aria-label="Portrait placeholder of the CEO"></div>
+        <div class="ceo-frame reveal">
+          <div class="ceo-photo" role="img" aria-label="Portrait of Andika R. Pratama, Founder & CEO">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=625&fit=crop" alt="Andika R. Pratama, CEO" />
+          </div>
           <span class="ceo-tag">Founder · CEO</span>
         </div>
-        <div class="ceo-copy">
-          <span class="kicker">03 · Leadership</span>
-          <h2>“Honest weight, honest dry, honest price — that's the whole job.”</h2>
+        <div class="ceo-copy reveal">
+          <span class="kicker">05 · Leadership</span>
+          <h2>"Honest weight, honest dry, honest price — that's the whole job."</h2>
           <p>
-            Fortune Seaweed's Trading is a family-run local buyer and seller. We buy dried Cottonii and Spinosum directly from coastal farmers in Sulawesi and resell it to processors and traders. Fair rates to our farmers, straightforward dealing with our buyers.
+            Fortune Seaweed's Trading is a family-run local buyer and seller. We buy dried Cottonii and Spinosum directly from coastal farmers in Sulawesi and resell it to processors and traders. Fair pricing, transparent dealings, and a commitment to quality have defined our 12+ years in the trade.
+          </p>
+          <p>
+            We believe the seaweed business thrives on relationships, not shortcuts. Every RFQ gets the same care, every batch gets the same scrutiny, and every customer — big or small — gets our best effort.
           </p>
           <p class="ceo-signature">— Andika R. Pratama, Founder &amp; CEO</p>
         </div>
@@ -140,20 +286,21 @@
     </section>
 
     <!-- ============ CONTACT / RFQ ============ -->
-    <section id="contact" class="section">
+    <section id="contact" class="section section-alt">
       <div class="container contact-grid">
-        <div class="contact-copy">
-          <span class="kicker">04 · Request a Quote</span>
+        <div class="contact-copy reveal">
+          <span class="kicker">06 · Request a Quote</span>
           <h2>Send Us a Quote Request.</h2>
           <p>Tell us the variety and volume you need. Our local desk responds within one business day with availability and indicative pricing.</p>
           <ul class="contact-meta">
             <li><strong>Trading Desk:</strong> trade@fortuneseaweeds.co</li>
             <li><strong>Bodega:</strong> Makassar, Sulawesi · ID</li>
-            <li><strong>Operating Hours:</strong> 07:00 – 19:00 WITA</li>
+            <li><strong>Operating Hours:</strong> 07:00 – 19:00 WITA (Mon–Fri)</li>
+            <li><strong>Phone:</strong> +62 411 123 4567</li>
           </ul>
         </div>
 
-        <form id="rfqForm" class="rfq-form" novalidate>
+        <form id="rfqForm" class="rfq-form reveal" novalidate>
           <div class="field">
             <label for="variety">Selected Variety</label>
             <select id="variety" name="variety" required>
@@ -195,25 +342,27 @@
   <!-- ============ FOOTER ============ -->
   <footer class="site-footer">
     <div class="container footer-grid">
-      <div>
+      <div class="footer-col">
         <span class="brand-text footer-brand">
           <strong>Fortune Seaweed's</strong> <em>Trading</em>
         </span>
-        <p>Local buyer and seller of dried Eucheuma Cottonii and Spinosum, based in Sulawesi.</p>
+        <p>Local buyer and seller of dried Eucheuma Cottonii and Spinosum, based in Sulawesi. Transparent pricing, direct relationships, quality seaweed.</p>
       </div>
-      <div>
+      <div class="footer-col">
         <h5>Location</h5>
         <ul>
           <li>Makassar Bodega</li>
           <li>Sulawesi, Indonesia</li>
+          <li>+62 411 123 4567</li>
         </ul>
       </div>
-      <div>
+      <div class="footer-col">
         <h5>Trade</h5>
         <ul>
-          <li>Buying from farmers</li>
-          <li>Selling to processors</li>
-          <li>Local delivery available</li>
+          <li><a href="#catalog">Our Products</a></li>
+          <li><a href="#bodega">Live Stock</a></li>
+          <li><a href="#contact">Request Quote</a></li>
+          <li>Buying & Selling</li>
         </ul>
       </div>
     </div>
