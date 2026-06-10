@@ -1,7 +1,7 @@
 /* =========================================================================
- * MarineTrade Sourcing Co. — script.js
+ * Fortune Seaweed's Trading — script.js
  * Lightweight vanilla JS: nav, RFQ cross-link, validation, modal,
- * and Google Sheets → live stock dashboard sync.
+ * Google Sheets → live stock dashboard sync, scroll reveal animations.
  * ========================================================================= */
 
 (() => {
@@ -14,16 +14,35 @@
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
   /* -------------------------------------------------------------
-   * 1. Mobile nav toggle
+   * 1. Mobile nav toggle with hamburger animation
    * ----------------------------------------------------------- */
   const navToggle = $('#navToggle');
   const navLinks  = $('.nav-links');
   if (navToggle && navLinks) {
-    navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
     navLinks.addEventListener('click', (e) => {
-      if (e.target.tagName === 'A') navLinks.classList.remove('open');
+      if (e.target.tagName === 'A') {
+        navToggle.classList.remove('open');
+        navLinks.classList.remove('open');
+      }
     });
   }
+
+  /* Close nav when scrolling */
+  let lastScrollTop = 0;
+  window.addEventListener('scroll', () => {
+    if (navToggle && navLinks && navToggle.classList.contains('open')) {
+      const st = window.pageYOffset || document.documentElement.scrollTop;
+      if (Math.abs(st - lastScrollTop) > 50) {
+        navToggle.classList.remove('open');
+        navLinks.classList.remove('open');
+      }
+      lastScrollTop = st <= 0 ? 0 : st;
+    }
+  });
 
   /* -------------------------------------------------------------
    * 2. "Select for RFQ" cross-link from catalog → contact form
@@ -36,14 +55,25 @@
         select.value = variety;
         select.dispatchEvent(new Event('change'));
       }
+      // Scroll to contact section
       document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-      // Briefly highlight the form
+      
+      // Pulse the form to draw attention
       const form = $('#rfqForm');
-      if (form) {
-        form.animate(
-          [{ boxShadow: '0 0 0 0 rgba(42,157,143,.6)' }, { boxShadow: '0 0 0 14px rgba(42,157,143,0)' }],
-          { duration: 900, easing: 'cubic-bezier(.2,.7,.2,1)' }
-        );
+      if (form && form.animate) {
+        try {
+          form.animate(
+            [
+              { boxShadow: '0 0 0 0 rgba(42,157,143,.6)', transform: 'scale(1)' },
+              { boxShadow: '0 0 0 0 rgba(42,157,143,0)', transform: 'scale(1.01)' },
+              { boxShadow: '0 0 0 0 rgba(42,157,143,0)', transform: 'scale(1)' }
+            ],
+            { duration: 600, easing: 'ease-out' }
+          );
+        } catch (e) {
+          // Fallback if WAAPI not supported
+          form.style.boxShadow = '0 8px 24px rgba(42,157,143,.4)';
+        }
       }
     });
   });
@@ -65,12 +95,19 @@
     modal.classList.add('open');
     modal.setAttribute('aria-hidden', 'false');
   };
+
   const closeModal = () => {
     modal.classList.remove('open');
     modal.setAttribute('aria-hidden', 'true');
   };
+
   $('#modalClose')?.addEventListener('click', closeModal);
   modal?.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+  // Close modal on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  });
 
   if (form) {
     form.addEventListener('submit', (e) => {
@@ -104,12 +141,14 @@
         return;
       }
 
-      // Submission stub — wire to your backend / email service
+      // Success — show confirmation modal
       openModal({
         ok: true,
-        title: 'RFQ Successfully Initialized',
-        body: `Your request for ${data.volume} MT of ${data.variety} (${data.terms} → ${data.port}) is queued. Our export desk will respond within 1 business day.`,
+        title: 'RFQ Successfully Submitted',
+        body: `Your request for ${data.volume} MT of ${data.variety} (${data.terms} → ${data.port}) has been queued. Our trading desk will respond within 1 business day.`,
       });
+
+      // Reset form
       form.reset();
     });
   }
@@ -117,7 +156,9 @@
   /* -------------------------------------------------------------
    * 4. Footer year + session id
    * ----------------------------------------------------------- */
-  const yearEl = $('#year'); if (yearEl) yearEl.textContent = new Date().getFullYear();
+  const yearEl = $('#year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  
   const sidEl  = $('#sessionId');
   if (sidEl) sidEl.textContent = 'MT-' + Math.random().toString(36).slice(2, 8).toUpperCase();
 
@@ -143,7 +184,6 @@
    *       metric             | value
    *       cottonii_mt        | 482
    *       spinosum_mt        | 316
-   *       pending_cargo_mt   | 128
    *       last_updated       | 2026-06-10 09:14 WITA
    *
    *  3. File → Share → "Publish to the web".
@@ -221,14 +261,22 @@
 
     const fmt = (n) => n.toLocaleString('en-US');
 
-    $('#stockCottonii').textContent = fmt(cottonii);
-    $('#stockSpinosum').textContent = fmt(spinosum);
+    const cottoniiEl = $('#stockCottonii');
+    if (cottoniiEl) cottoniiEl.textContent = fmt(cottonii);
+    
+    const spinosumEl = $('#stockSpinosum');
+    if (spinosumEl) spinosumEl.textContent = fmt(spinosum);
 
-    const c = $('#meterCottonii'); if (c) c.style.width = Math.min(100, (cottonii / MAX_BAR_MT) * 100) + '%';
-    const s = $('#meterSpinosum'); if (s) s.style.width = Math.min(100, (spinosum / MAX_BAR_MT) * 100) + '%';
+    const c = $('#meterCottonii');
+    if (c) c.style.width = Math.min(100, (cottonii / MAX_BAR_MT) * 100) + '%';
+    
+    const s = $('#meterSpinosum');
+    if (s) s.style.width = Math.min(100, (spinosum / MAX_BAR_MT) * 100) + '%';
 
     const stamp = data.last_updated || new Date().toLocaleString();
-    const sync = $('#lastSync'); if (sync) sync.textContent = stamp;
+    const sync = $('#lastSync');
+    if (sync) sync.textContent = stamp;
+    
     const dot = $('#liveDot');
     if (dot) {
       dot.childNodes.forEach((n) => { if (n.nodeType === 3) n.textContent = 'LIVE'; });
@@ -247,7 +295,7 @@
       const data = csvToObject(text);
       renderStock(data);
     } catch (err) {
-      console.warn('[MarineTrade] Live stock sync failed, using mock data:', err);
+      console.warn('[Fortune Seaweed's] Live stock sync failed, using mock data:', err);
       renderStock(MOCK);
     }
   }
@@ -258,32 +306,60 @@
 
   /* -------------------------------------------------------------
    * 6. Scroll Reveal — depth push-forward
-   * Auto-tags section headers, cards, and grid items, then uses
-   * IntersectionObserver to fade + scale them forward on entry.
+   * Uses IntersectionObserver to fade + scale elements forward on entry.
+   * Works on pre-tagged .reveal elements (added in HTML).
    * ----------------------------------------------------------- */
-  const revealTargets = [
-    '.section-head',
-    '.product-card',
-    '.stock-card',
-    '.ceo-frame',
-    '.ceo-copy',
-    '.rfq-form',
-    '.contact-meta',
-  ];
-  const revealGroups = ['.catalog-grid', '.stock-grid'];
-
-  $$(revealTargets.join(',')).forEach((el) => el.classList.add('reveal'));
-  $$(revealGroups.join(',')).forEach((el) => el.classList.add('reveal-group'));
-
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         entry.target.classList.toggle('in-view', entry.isIntersecting);
       });
-    }, { threshold: 0.15, rootMargin: '0px 0px -80px 0px' });
+    }, {
+      threshold: 0.15,
+      rootMargin: '0px 0px -80px 0px'
+    });
+
     $$('.reveal').forEach((el) => io.observe(el));
   } else {
+    // Fallback for browsers without IntersectionObserver
     $$('.reveal').forEach((el) => el.classList.add('in-view'));
+  }
+
+  /* -------------------------------------------------------------
+   * 7. Animated counter for hero stats (optional polish)
+   * ----------------------------------------------------------- */
+  function countUp(el, target, duration = 1000) {
+    if (!el || isNaN(target)) return;
+    const start = 0;
+    const increment = target / (duration / 16);
+    let current = start;
+
+    const counter = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        el.textContent = target;
+        clearInterval(counter);
+      } else {
+        el.textContent = Math.floor(current);
+      }
+    }, 16);
+  }
+
+  // Trigger counter animation when hero stats enter view
+  const heroStats = $$('.hero-stats dd');
+  if (heroStats.length && 'IntersectionObserver' in window) {
+    const ioStats = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !entry.target.dataset.animated) {
+          const text = entry.target.textContent.replace(/[^\d.]/g, '');
+          const num = parseInt(text, 10);
+          countUp(entry.target, num, 1200);
+          entry.target.dataset.animated = 'true';
+        }
+      });
+    }, { threshold: 0.5 });
+
+    heroStats.forEach((el) => ioStats.observe(el));
   }
 
 })();
